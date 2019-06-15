@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="col-md-12 mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <form method="POST" [formGroup]="employeeForm" (ngSubmit)="saveEmployee(employeeForm.value)">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" formControlName="name" class="form-control" id="name" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" name="email" formControlName="email" class="form-control" id="email"  placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="mobile">Mobile</label>
+            <input placeholder="Mobile" type="number" formControlName="mobile" class="form-control" id="mobile">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="col-md-6">
+          <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Mobile</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let employee of allEmployees;let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ employee.name }}</td>
+                  <td>{{ employee.email }}</td>
+                  <td>{{ employee.mobile }}</td>
+                  <td><a routerLink="/employee/{{ employee._id }}" class="btn btn-info">Edit</a>&nbsp;
+                  <!-- <form method="POST" [formGroup]="deleteForm" (ngSubmit)="deleteEmpData(deleteForm.value)"> -->
+                    <!-- <input type="hidden" formControlName="_id" name="_id" value="{{ employee._id }}"> -->
+                    <button class="btn btn-danger" (click)="deleteEmpData(employee._id)">Delete</button>
+                  <!-- </form> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+    </div>
+  </div>
+</div>

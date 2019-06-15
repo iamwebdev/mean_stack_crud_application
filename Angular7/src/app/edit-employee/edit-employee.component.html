@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="col-md-12 mt-5">
+      <div class="col-md-6">
+        <form method="POST" [formGroup]="editEmployeeForm" (ngSubmit)="updateEmployee(editEmployeeForm.value)">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" value="{{ employeeData.name }}" formControlName="name" class="form-control" id="name" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" name="email" value="{{ employeeData.email }}" formControlName="email" class="form-control" id="email"  placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="mobile">Mobile</label>
+            <input placeholder="Mobile" type="number" value="{{ employeeData.mobile }}" formControlName="mobile" class="form-control" id="mobile">
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+  </div>
+</div>
